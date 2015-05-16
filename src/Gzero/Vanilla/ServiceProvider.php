@@ -34,6 +34,7 @@ class ServiceProvider extends SP {
     public function boot()
     {
         $this->registerRoutes();
+        $this->package('gzero/vanilla-integration', 'vanilla-integration');
     }
 
     /**

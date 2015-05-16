@@ -12,7 +12,8 @@
     "require": {
         "php": ">=5.4.0",
         "gzero/core": "dev-master",
-        "illuminate/routing": "4.2.*"
+        "illuminate/routing": "4.2.*",
+        "illuminate/auth": "4.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "1.4.0",
