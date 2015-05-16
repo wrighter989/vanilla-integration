@@ -21,12 +21,7 @@ class ServiceProvider extends SP {
      */
     public function register()
     {
-        $this->registerHelpers();
-        $this->registerFilters();
-        $this->bindRepositories();
-        $this->bindTypes();
-        $this->bindOtherStuff();
-        $this->bindCommands();
+        //
     }
 
     /**
@@ -36,7 +31,17 @@ class ServiceProvider extends SP {
      */
     public function boot()
     {
-        //
+        $this->registerRoutes();
+    }
+
+    /**
+     * Add additional file to store routes
+     *
+     * @return void
+     */
+    protected function registerRoutes()
+    {
+        require_once __DIR__ . '/../../routes.php';
     }
 
 }

@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "gzero/core": "dev-master"
+        "gzero/core": "dev-master",
+        "illuminate/routing": "4.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "1.4.0",
@@ -22,6 +23,7 @@
     },
     "autoload": {
         "classmap": [],
+        "files": ["src/functions.jsconnect.php"],
         "psr-4": {
             "Gzero\\": "src/Gzero"
         }
