@@ -23,7 +23,7 @@
     },
     "autoload": {
         "classmap": [],
-        "files": ["src/functions.jsconnect.php"],
+        "files": ["src/libs/functions.jsconnect.php"],
         "psr-4": {
             "Gzero\\": "src/Gzero"
         }

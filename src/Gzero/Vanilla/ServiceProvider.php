@@ -1,5 +1,7 @@
 <?php namespace Gzero\Vanilla;
 
+use Illuminate\Support\ServiceProvider as SP;
+
 /**
  * This file is part of the GZERO CMS package.
  *
