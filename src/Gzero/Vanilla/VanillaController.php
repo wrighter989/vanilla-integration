@@ -41,7 +41,6 @@ class VanillaController extends Controller {
      */
     public function index()
     {
-        dd(forum_url('categories'));
         $refererDomain = parse_url(\Request::server('HTTP_REFERER'), PHP_URL_HOST);
         if ($refererDomain === $this->config->get('vanilla-integration::forum_domain')) {
             \Debugbar::disable();
