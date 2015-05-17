@@ -1,11 +1,11 @@
 # GZERO vanilla-integration
-===
+
 Vanilla forum integration package for GZERO CMS
 
 # Table of contents
-* [Installation](#instalation)
+* [Installation](#installation)
 * [Configuration](#configuration)
-* [Overriding configuration](#ovverriding-configuration)
+* [Overriding configuration](#overriding-configuration)
 * [How to use this integration](#how-to-use-this-integration)
 
 ## Installation
