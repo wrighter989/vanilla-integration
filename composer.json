@@ -1,7 +1,12 @@
 {
     "name": "gzero/vanilla-integration",
     "description": "Gzero Vanilla Integration",
-    "keywords": ["laravel", "cms", "vanilla forum", "integration"],
+    "keywords": [
+        "laravel",
+        "cms",
+        "vanilla forum",
+        "integration"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -12,8 +17,9 @@
     "require": {
         "php": ">=5.4.0",
         "gzero/core": "dev-master",
-        "illuminate/routing": "4.2.*",
-        "illuminate/auth": "4.2.*"
+        "illuminate/auth": "4.2.*",
+        "illuminate/config": "4.2.*",
+        "illuminate/routing": "4.2.*"
     },
     "require-dev": {
         "fzaninotto/faker": "1.4.0",

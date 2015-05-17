@@ -33,6 +33,7 @@ class ServiceProvider extends SP {
      */
     public function boot()
     {
+        $this->registerHelpers();
         $this->registerRoutes();
         $this->package('gzero/vanilla-integration', 'vanilla-integration');
     }
@@ -45,6 +46,16 @@ class ServiceProvider extends SP {
     protected function registerRoutes()
     {
         require_once __DIR__ . '/../../routes.php';
+    }
+
+    /**
+     * Add additional file to store helpers
+     *
+     * @return void
+     */
+    protected function registerHelpers()
+    {
+        require_once __DIR__ . '/../../helpers.php';
     }
 
 }
