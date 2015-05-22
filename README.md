@@ -50,6 +50,12 @@ return [
 ];
  ```
  
+Set sso url in Vanilla Forum jsConnect settings
+
+ ```PHP
+ http://api.dev.gzero.pl:8000/v1/vanilla-sso
+ ```
+ 
 ### How to use this integration
 
 To make sure that user is synchronized with your GZERO CMS site, you should always use `forum_url()` helper to build url to all 
