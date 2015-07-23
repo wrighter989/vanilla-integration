@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": ">=5.5.9",
         "gzero/core": "dev-master",
         "illuminate/auth": "4.2.*",
         "illuminate/config": "4.2.*",
