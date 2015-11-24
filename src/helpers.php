@@ -10,6 +10,6 @@ if (!function_exists('forum_url')) {
      */
     function forum_url($uri = '')
     {
-        return config('vanilla-integration::sso') . ((!empty($uri)) ? '?Target=/' . $uri : '');
+        return config('vanilla-integration.sso') . ((!empty($uri)) ? '?Target=/' . $uri : '');
     }
 }

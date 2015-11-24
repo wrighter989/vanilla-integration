@@ -33,7 +33,8 @@ class ServiceProvider extends SP {
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../../config/config.php';
+        $configPath = __DIR__ . '/../../config/vanilla-integration.php';
+        $this->mergeConfigFrom($configPath, 'vanilla-integration');
         $this->publishes(
             [
                 $configPath => config_path('vanilla-integration.php'),

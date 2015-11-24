@@ -43,10 +43,12 @@ class VanillaController extends Controller {
     public function index()
     {
         $referrerDomain = parse_url(\Request::server('HTTP_REFERER'), PHP_URL_HOST);
-        if ($referrerDomain === $this->config->get('vanilla-integration::forum_domain')) {
-            \Debugbar::disable();
-            $clientID = $this->config->get('vanilla-integration::client_id');
-            $secret   = $this->config->get('vanilla-integration::secret');
+        if ($referrerDomain === $this->config->get('vanilla-integration.forum_domain')) {
+            if (class_exists('Debugbar')) {
+                \Debugbar::disable();
+            }
+            $clientID = $this->config->get('vanilla-integration.client_id');
+            $secret   = $this->config->get('vanilla-integration.secret');
             $user     = [];
             if ($this->auth->check()) {
                 $currentUser      = $this->auth->user();
