@@ -1,9 +1,9 @@
 <?php
 
 // Public API
-Route::group(
-    ['domain' => 'api.' . Config::get('gzero.domain'), 'prefix' => 'v1'],
+group(
+    ['domain' => 'api.' . config('gzero.domain'), 'prefix' => 'v1'],
     function () {
-        Route::get('vanilla-sso', ['uses' => 'Gzero\Vanilla\VanillaController@index']);
+        get('vanilla-sso', ['uses' => 'Gzero\Vanilla\VanillaController@index']);
     }
 );

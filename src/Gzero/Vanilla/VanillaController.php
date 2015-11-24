@@ -28,6 +28,7 @@ class VanillaController extends Controller {
 
     /**
      * @param AuthManager $auth
+     * @param Repository  $config
      */
     public function __construct(AuthManager $auth, Repository $config)
     {
@@ -37,12 +38,12 @@ class VanillaController extends Controller {
 
 
     /**
-     * Connect method. It's returning jsonp response
+     * Connect method. It's returning JSONP response
      */
     public function index()
     {
-        $refererDomain = parse_url(\Request::server('HTTP_REFERER'), PHP_URL_HOST);
-        if ($refererDomain === $this->config->get('vanilla-integration::forum_domain')) {
+        $referrerDomain = parse_url(\Request::server('HTTP_REFERER'), PHP_URL_HOST);
+        if ($referrerDomain === $this->config->get('vanilla-integration::forum_domain')) {
             \Debugbar::disable();
             $clientID = $this->config->get('vanilla-integration::client_id');
             $secret   = $this->config->get('vanilla-integration::secret');
@@ -60,7 +61,7 @@ class VanillaController extends Controller {
             WriteJsConnect($user, Input::only(['client_id', 'signature', 'callback', 'timestamp']), $clientID, $secret, $secure);
             return '';
         } else {
-            return \App::abort(404);
+            return app()->abort(404);
         }
     }
 }

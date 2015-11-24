@@ -21,7 +21,7 @@
         "illuminate/config": "5.1.*",
         "illuminate/routing": "5.1.*"
     },
-    "require-dev": {
+        "require-dev": {
         "fzaninotto/faker": "1.4.0",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "4.3.*",
@@ -35,5 +35,5 @@
             "Gzero\\": "src/Gzero"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

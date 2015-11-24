@@ -33,9 +33,14 @@ class ServiceProvider extends SP {
      */
     public function boot()
     {
+        $configPath = __DIR__ . '/../../config/config.php';
+        $this->publishes(
+            [
+                $configPath => config_path('vanilla-integration.php'),
+            ]
+        );
         $this->registerHelpers();
         $this->registerRoutes();
-        $this->package('gzero/vanilla-integration', 'vanilla-integration');
     }
 
     /**
@@ -45,7 +50,7 @@ class ServiceProvider extends SP {
      */
     protected function registerRoutes()
     {
-        require_once __DIR__ . '/../../routes.php';
+        require __DIR__ . '/../../routes.php';
     }
 
     /**
@@ -55,7 +60,7 @@ class ServiceProvider extends SP {
      */
     protected function registerHelpers()
     {
-        require_once __DIR__ . '/../../helpers.php';
+        require __DIR__ . '/../../helpers.php';
     }
 
 }
