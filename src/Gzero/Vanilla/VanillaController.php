@@ -53,7 +53,7 @@ class VanillaController extends Controller {
             if ($this->auth->check()) {
                 $currentUser      = $this->auth->user();
                 $user['uniqueid'] = $currentUser->id;
-                $user['name']     = $currentUser->firstName . ' ' . $currentUser->lastName;
+                $user['name']     = $currentUser->getPresenter()->displayName();
                 $user['email']    = $currentUser->email;
             }
             // Generate the jsConnect string.
