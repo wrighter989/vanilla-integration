@@ -61,7 +61,7 @@ class VanillaController extends Controller {
             // You can also use a hash name like md5, sha1 etc which must be the name as the connection settings in Vanilla.
             $secure = true;
             WriteJsConnect($user, Input::only(['client_id', 'signature', 'callback', 'timestamp']), $clientID, $secret, $secure);
-            return '';
+            return response('')->header('Content-Type', 'application/javascript');
         } else {
             return app()->abort(404);
         }
