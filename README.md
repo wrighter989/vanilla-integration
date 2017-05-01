@@ -14,9 +14,8 @@ Begin by installing this package through Composer. Edit your project's composer.
 
 ```json
 "require": {
-    "gzero/vanilla-integration": "dev-master",
-},
-"minimum-stability" : "dev"
+    "gzero/vanilla-integration": "^2.0",
+}
 ```
 Next, update Composer from the Terminal:
 ```
