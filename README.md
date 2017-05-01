@@ -53,7 +53,7 @@ return [
 Set sso url in Vanilla Forum jsConnect settings
 
  ```PHP
- http://api.dev.gzero.pl:8000/v1/vanilla-sso
+ http://dev.gzero.pl/_hidden/vanilla-sso
  ```
  
 ### How to use this integration

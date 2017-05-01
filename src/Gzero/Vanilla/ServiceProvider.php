@@ -23,7 +23,7 @@ class ServiceProvider extends SP {
      */
     public function register()
     {
-        //
+        $this->mergeConfigFrom($this->getConfigPath(), 'vanilla-integration');
     }
 
     /**
@@ -33,25 +33,14 @@ class ServiceProvider extends SP {
      */
     public function boot()
     {
-        $configPath = __DIR__ . '/../../config/vanilla-integration.php';
-        $this->mergeConfigFrom($configPath, 'vanilla-integration');
         $this->publishes(
             [
-                $configPath => config_path('vanilla-integration.php'),
-            ]
+                $this->getConfigPath() => config_path('vanilla-integration.php'),
+            ],
+            'config'
         );
+        $this->loadRoutesFrom(__DIR__ . '/../../../routes/routes.php');
         $this->registerHelpers();
-        $this->registerRoutes();
-    }
-
-    /**
-     * Add additional file to store routes
-     *
-     * @return void
-     */
-    protected function registerRoutes()
-    {
-        require __DIR__ . '/../../routes.php';
     }
 
     /**
@@ -62,6 +51,16 @@ class ServiceProvider extends SP {
     protected function registerHelpers()
     {
         require __DIR__ . '/../../helpers.php';
+    }
+
+    /**
+     * It returns config path
+     *
+     * @return string
+     */
+    protected function getConfigPath()
+    {
+        return $configPath = __DIR__ . '/../../../config/vanilla-integration.php';
     }
 
 }

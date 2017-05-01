@@ -2,8 +2,8 @@
 
 use Illuminate\Auth\AuthManager;
 use Illuminate\Config\Repository;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Input;
 
 /**
  * This file is part of the GZERO CMS package.
@@ -39,31 +39,37 @@ class VanillaController extends Controller {
 
     /**
      * Connect method. It's returning JSONP response
+     *
+     * @param Request $request
+     *
+     * @return string
      */
-    public function index()
+    public function index(Request $request)
     {
-        $referrerDomain = parse_url(\Request::server('HTTP_REFERER'), PHP_URL_HOST);
-        if ($referrerDomain === $this->config->get('vanilla-integration.forum_domain')) {
-            if (class_exists('Debugbar')) {
-                \Debugbar::disable();
-            }
-            $clientID = $this->config->get('vanilla-integration.client_id');
-            $secret   = $this->config->get('vanilla-integration.secret');
-            $user     = [];
-            if ($this->auth->check()) {
-                $currentUser      = $this->auth->user();
-                $user['uniqueid'] = $currentUser->id;
-                $user['name']     = $currentUser->getPresenter()->displayName();
-                $user['email']    = $currentUser->email;
-            }
-            // Generate the jsConnect string.
-            // This should be true unless you are testing.
-            // You can also use a hash name like md5, sha1 etc which must be the name as the connection settings in Vanilla.
-            $secure = true;
-            WriteJsConnect($user, Input::only(['client_id', 'signature', 'callback', 'timestamp']), $clientID, $secret, $secure);
-            return response('')->header('Content-Type', 'application/javascript');
-        } else {
+        $referrerDomain = parse_url($request->server('HTTP_REFERER'), PHP_URL_HOST);
+        if ($referrerDomain !== $this->config->get('vanilla-integration.forum_domain')) {
             return app()->abort(404);
         }
+
+        if (class_exists('Debugbar')) {
+            \Debugbar::disable();
+        }
+        $clientID = $this->config->get('vanilla-integration.client_id');
+        $secret   = $this->config->get('vanilla-integration.secret');
+
+        $user = [];
+        if ($this->auth->check()) {
+            $currentUser      = $this->auth->user();
+            $user['uniqueid'] = $currentUser->id;
+            $user['name']     = $currentUser->getPresenter()->displayName();
+            $user['email']    = $currentUser->email;
+        }
+
+        // Generate the jsConnect string.
+        // This should be true unless you are testing.
+        // You can also use a hash name like md5, sha1 etc which must be the name as the connection settings in Vanilla.
+        $secure = true;
+        WriteJsConnect($user, $request->only(['client_id', 'signature', 'callback', 'timestamp']), $clientID, $secret, $secure);
+        return response('')->header('Content-Type', 'application/javascript');
     }
 }
